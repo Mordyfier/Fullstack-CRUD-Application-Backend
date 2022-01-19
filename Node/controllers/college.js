@@ -1,9 +1,15 @@
+// import of models - more infor there:
 const Student = require('../models/student');
 const Professor = require('../models/professor');
 const Course = require('../models/course');
 const Department = require('../models/department');
 
 
+// anatomy of a controller function - GET version:
+// exports. - so that each controller is exported without having to export them all together at the end
+// <class>.fetchAll() - a static function of the class that requests all entries from the corresponding database with a query
+// (more detail on that in the models - since all the models are pretty much the same, I put it in course.js)
+// res.status(200).json(result.rows) sends the response in JSON form
 
 exports.getAllStudents = (req, res, next) => {
     Student.fetchAll()
@@ -39,6 +45,13 @@ exports.getAllDepartments = (req, res, next) => {
     }))
     .catch(err => console.log(err));
 };
+
+// anatomy of a controller function - POST version:
+// exports. - as before
+// first { declaration } destructures the request body obtaining the appropriate data entries
+// using those variables, we create a new <class> object using the model
+// save() is an instance method that inserts the object into the database 
+// res.status(200).json(result.rows) sends the response in JSON form
 
 exports.addStudent = (req, res, next) => {
     const {student_id, student_name, student_dob} = req.body;
