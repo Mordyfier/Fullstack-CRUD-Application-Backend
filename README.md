@@ -25,23 +25,20 @@ Standard CRUD operations available.
 Body example: 
 ```JSON
 {
-    "studentName" : "Joe Student",
-    "studentDob" : "1997-05-07T00:00:00.000Z",
-    "studentSex" : "M",
-    "studentGpa" : 3,
-    "studentUrl" : "https://someUrl.com",
+    "firstName" : "Joe",
+    "lastDob" : "Student",
+    "email" : "joe@mama.com",
+    "imageUrl" : null,
+    "gpa" : 3.4,
     "campusId" : null
 }
 ```
 
-Where (`*` indicates NOT NULL field): 
-- `studentName*` is a string;
-- `studentDob*` is a date string (in whatever format is parsable as such in Postgres; 'YYYY-MM-DD' works); 
-- `studentSex*` is Enum, where the possible values are 'M', 'F', 'O'; 
-- `studentGpa*` is a double - no constraints on it, but it only makes sense to make it between 0 and 4; 
-- `studentUrl` is a link to student's picture; 
-
-and, finally, 
+Where: 
+- `firstName`, `lastName` are strings. Cannot be null or empty string.
+- `email` constraints: not null, must be a valid email format.
+- `imageUrl` default value is a placeholder. If you have no image, leave `null`. 
+- `gpa` is a double, constrained to be a value between 0 and 4.
 - `campusId` is an integer reference to the campus the student is associated with (`null` is an acceptable value in case student has no campus). 
 
 
@@ -49,17 +46,17 @@ and, finally,
 Body example:
 ```JSON
 {
-    "campusName" : "Brooklyn College",
-    "campusLocation" : "2900 Bedford Ave, Brooklyn, NY 11210",
-    "campusUrl" : "https://www.amny.com/wp-content/uploads/2021/02/BC2.jpg",
-    "campusDesc" : "Brooklyn College is a public university in Brooklyn, New York. It is part of the City University of New York system and enrolls about 15,000 undergraduate and 2,800 graduate students on a 35-acre campus."
+    "name" : "Brooklyn College",
+    "imageUrl" : "https://www.amny.com/wp-content/uploads/2021/02/BC2.jpg",
+    "address" : "2900 Bedford Ave, Brooklyn, NY 11210",
+    "description" : "Brooklyn College is a public university in Brooklyn, New York. It is part of the City University of New York system and enrolls about 15,000 undergraduate and 2,800 graduate students on a 35-acre campus."
 }
 ```
-Where (`*` indicates NOT NULL field): 
-- `campusName*` is a string; 
-- `campusLocation` is a string for the campus' address; 
-- `campusUrl` is a link to a picture of the campus; 
-- `campusDesc` is a short description limited to 255 characters (would be prudent to put a limit on the input box in the frontend).
+Where: 
+- `name` is a non-null, non-empty string; 
+- `imageUrl` contains placeholder image by default, ignore if got nothing better 😉; 
+- `address` non-null, non-empty string; 
+- `description` extremely large text, or 4096 characters.
 
 ## PUT -- Updating data in the tables
 
@@ -71,11 +68,11 @@ Body example for /students (same logic applies for /campuses):
 ```JSON
 {
     "studentId" : 1,
-    "studentName" : "Joe Student",
-    "studentDob" : "1997-05-07T00:00:00.000Z",
-    "studentSex" : "M", 
-    "studentGpa" : 3.1,
-    "studentUrl" : "https://someUrl.com",
+    "firstName" : "Joe",
+    "lastDob" : "Student",
+    "email" : "joe@mama.com",
+    "imageUrl" : null,
+    "gpa" : 3.4,
     "campusId" : null
 }
 ```
