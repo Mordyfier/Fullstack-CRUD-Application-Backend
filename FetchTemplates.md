@@ -35,12 +35,12 @@ async function postStudent() {
     }, 
     method: 'POST',
     body: JSON.stringify({
-      "studentName": "John Smith",
-      "studentDob": "1997-03-19",
-      "studentSex": "M",
-      "studentGpa": 2.9,
-      "studentUrl": "",
-      "campusId": 1
+        "firstName" : "Joe",
+        "lastDob" : "Student",
+        "email" : "joe@mama.com",
+        "imageUrl" : null,
+        "gpa" : 3.4,
+        "campusId" : null
     }),
     redirect: 'follow'
   });
@@ -70,13 +70,13 @@ async function updateStudent() {
     }, 
     method: 'PUT',
     body: JSON.stringify({
-      "studentId":5,
-      "studentName": "John Smith",
-      "studentDob": "1997-03-19",
-      "studentSex": "M",
-      "studentGpa": 3.7,
-      "studentUrl": "",
-      "campusId": 1
+        "studentId" : 1,
+        "firstName" : "Joe",
+        "lastDob" : "Student",
+        "email" : "joe@mama.com",
+        "imageUrl" : null,
+        "gpa" : 3.4,
+        "campusId" : null
     }),
     redirect: 'follow'
   });
