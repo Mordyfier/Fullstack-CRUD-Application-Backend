@@ -56,7 +56,7 @@ Where:
 - `name` is a non-null, non-empty string; 
 - `imageUrl` contains placeholder image by default, ignore if got nothing better 😉; 
 - `address` non-null, non-empty string; 
-- `description` extremely large text, or 4096 characters.
+- `description` extremely large *text*.
 
 ## PUT -- Updating data in the tables
 
