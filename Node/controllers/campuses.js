@@ -1,6 +1,5 @@
 const db = require('../models');
-const Campus = db.Campus;
-const Student = db.Student;
+const { Campus, Student } = db;
 // columns: campusId (autoIncrement), campusName, campusImageUrl, campusAddress, campusDesc
 
 exports.getAllCampuses = async (req, res, next) => {
@@ -23,22 +22,11 @@ exports.getCampusById = async (req, res, next) => {
 
 
 exports.createCampus = async (req, res, next) => {
-    const { name, imageUrl, address, desc } = req.body;
     try {
-        await Campus.create({
-            name : name,
-            imageUrl : imageUrl,
-            address : address,
-            description : desc
-        });
+        const campus = await Campus.create(req.body);
         res.status(201).json({
-            message: `Campus '${name}' added. Full data:`,
-            campus: { 
-                name : name,
-                imageUrl : imageUrl,
-                address : address,
-                description : desc
-            }
+            message: `Campus '${campus.name}' created. Full data:`,
+            campus: campus
         });
     } catch (err) {
         res.status(404).json({error : err});
@@ -46,24 +34,14 @@ exports.createCampus = async (req, res, next) => {
 }
 
 exports.updateCampus = async (req, res, next) => {
-    const { campusId, name, imageUrl, address, desc } = req.body;
     try {
-        await Campus.update({
-                name : name,
-                imageUrl : imageUrl,
-                address : address,
-                description : desc
-            }, 
-            { where : { id : campusId } }
-        );
+        const updated = await Campus.update(req.body, { 
+            where : { id : req.body.id },
+            returning : true 
+        });
         res.status(200).json({
-            message: `Campus '${name}' updated. Full data:`,
-            campus: { 
-                name : name,
-                imageUrl : imageUrl,
-                address : address,
-                description : desc
-            }
+            message: `Campus with id ${req.body.id} (${updated[1][0].dataValues.name}) updated. Full data:`,
+            campus: updated[1][0].dataValues
         });
     } catch (err) {
         res.status(404).json({error : err});
@@ -83,8 +61,8 @@ exports.getCampusStudents = async (req, res, next) => {
 exports.deleteCampus = async (req, res, next) => {
     const campusId = req.params.id;
     try {
-        await Campus.destroy({where : {id : campusId}});
-        await Student.update({campusId : null}, {where : { campusId : campusId }})
+        await Campus.destroy({ where : { id : campusId } });
+        await Student.update({ campusId : null }, { where : { campusId : campusId }})
         res.status(200).json({ outcome: `Campus with id ${campusId} deleted. All its students have been unenrolled.` });
     } catch(err) {
         console.log(err);
