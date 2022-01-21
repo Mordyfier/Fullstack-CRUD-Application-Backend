@@ -6,8 +6,8 @@ const studentsController = require('../controllers/students')
 const router = express.Router();
 
 
-router.get('/students', studentsController.readStudents);
-router.get('/students/:id', studentsController.readStudent);
+router.get('/students', studentsController.getStudents);
+router.get('/students/:id', studentsController.getStudent);
 router.post('/students', studentsController.createStudent);
 router.put('/students', studentsController.updateStudent);
 router.delete('/students/:id', studentsController.deleteStudent);
