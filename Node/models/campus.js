@@ -8,15 +8,23 @@ module.exports = (sequelize, DataTypes) =>  {
         },
         name : {
             type : DataTypes.STRING,
-            allowNull : false
+            allowNull : false,
+            validate : {
+                notEmpty : true,
+            }
         },
-        location : {
+        imageUrl : {
             type : DataTypes.STRING,
+            defaultValue: "https://commonlook.com/wp-content/uploads/2019/05/placeholder.jpg"
         },
-        url : {
+        address : {
             type : DataTypes.STRING,
+            allowNull : false,
+            validate : {
+                notEmpty : true
+            }
         },
-        desc : {
+        description : {
             type : DataTypes.STRING,
         }
     });

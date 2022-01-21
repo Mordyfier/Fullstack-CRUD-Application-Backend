@@ -1,7 +1,7 @@
 const db = require('../models');
 const Campus = db.Campus;
 const Student = db.Student;
-// columns: campusId (autoIncrement), campusName, campusLocation, campusUrl, campusDesc
+// columns: campusId (autoIncrement), campusName, campusImageUrl, campusAddress, campusDesc
 
 exports.getAllCampuses = async (req, res, next) => {
     try {
@@ -22,22 +22,22 @@ exports.getCampusById = async (req, res, next) => {
 };
 
 
-exports.addCampus = async (req, res, next) => {
-    const { campusName, campusLocation, campusUrl, campusDesc } = req.body;
+exports.createCampus = async (req, res, next) => {
+    const { name, imageUrl, address, desc } = req.body;
     try {
         await Campus.create({
-            name : campusName,
-            location : campusLocation,
-            url : campusUrl,
-            desc : campusDesc
+            name : name,
+            imageUrl : imageUrl,
+            address : address,
+            description : desc
         });
         res.status(201).json({
-            message: `Campus '${campusName}' added. Full data:`,
+            message: `Campus '${name}' added. Full data:`,
             campus: { 
-                name : campusName,
-                location : campusLocation,
-                url : campusUrl,
-                desc : campusDesc
+                name : name,
+                imageUrl : imageUrl,
+                address : address,
+                description : desc
             }
         });
     } catch (err) {
@@ -46,21 +46,23 @@ exports.addCampus = async (req, res, next) => {
 }
 
 exports.updateCampus = async (req, res, next) => {
-    const { campusId, campusName, campusLocation, campusUrl, campusDesc } = req.body;
+    const { campusId, campusName, campusImageUrl, campusAddress, campusDesc } = req.body;
     try {
         await Campus.update({
-            name : campusName,
-            location : campusLocation,
-            url : campusUrl,
-            desc : campusDesc
-        }, {where : { id : campusId }});
+                name : campusName,
+                imageUrl : campusImageUrl,
+                address : campusAddress,
+                description : campusDesc
+            }, 
+            { where : { id : campusId } }
+        );
         res.status(200).json({
             message: `Campus '${campusName}' updated. Full data:`,
             campus: { 
                 name : campusName,
-                location : campusLocation,
-                url : campusUrl,
-                desc : campusDesc
+                imageUrl : campusImageUrl,
+                address : campusAddress,
+                description : campusDesc
             }
         });
     } catch (err) {

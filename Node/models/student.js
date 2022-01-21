@@ -6,25 +6,41 @@ module.exports = (sequelize, DataTypes) =>  {
             allowNull : false,
             primaryKey : true
         },
-        name : {
+        firstName : {
             type : DataTypes.STRING,
-            allowNull : false
+            allowNull : false,
+            validate : {
+                notEmpty : true,
+            }
         },
-        dob : {
-            type : DataTypes.DATE,
-            allowNull : false
+        lastName : {
+            type : DataTypes.STRING,
+            allowNull : false,
+            validate : {
+                notEmpty : true,
+            }
         },
-        sex : {
-            type : DataTypes.ENUM('M', 'F', 'O'),
-            allowNull : false
+        email : {
+            type : DataTypes.STRING,
+            allowNull : false,
+            validate : {
+                notEmpty : true,
+                isEmail : true
+            }
+        },
+        imageUrl : {
+            type : DataTypes.STRING,
+            defaultValue : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
         },
         gpa : {
             type : DataTypes.DOUBLE,
-            allowNull : false
+            allowNull : false,
+            validate : {
+                min : 0.0,
+                max : 4.0,
+                isDecimal : true
+            }
         },
-        url : {
-            type : DataTypes.STRING,
-        }
     });
     return Student;
 }

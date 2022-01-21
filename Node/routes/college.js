@@ -15,7 +15,7 @@ router.delete('/students/:id', studentsController.deleteStudent);
 router.get('/campuses', campusesController.getAllCampuses);
 router.get('/campuses/:id', campusesController.getCampusById);
 router.get('/campuses/:id/students', campusesController.getCampusStudents);
-router.post('/campuses', campusesController.addCampus);
+router.post('/campuses', campusesController.createCampus);
 router.put('/campuses', campusesController.updateCampus);
 router.delete('/campuses/:id', campusesController.deleteCampus);
 
