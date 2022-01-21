@@ -51,8 +51,8 @@ Output:
 ```JS
 
 {
-  message: "Student 'John Smith' added. 
-  Full data:"student: {name: 'John Smith', dob: '1997-03-19', sex: 'M', gpa: 2.9, url: '', … }
+  message: "Student 'John Smith' added. Full data:"
+  student: {name: 'John Smith', dob: '1997-03-19', sex: 'M', gpa: 2.9, url: '', … }
 }
 
 ```
