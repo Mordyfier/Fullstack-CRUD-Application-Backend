@@ -8,7 +8,7 @@ Standard CRUD operations available.
 
 # Endpoints:
 
-## GET
+## GET -- Reading from the tables
 
 ### For students:
 ### [/students](https://ttp-college-db.herokuapp.com/students) - Returns an array of students from the Postgres database
@@ -19,7 +19,7 @@ Standard CRUD operations available.
 ### [/campuses/:id](https://ttp-college-db.herokuapp.com/campuses/1) - Returns an individual campus
 ### [/campuses/:id/students](https://ttp-college-db.herokuapp.com/campuses/1/students) - Returns all of the students associated with the campus specified with the id url parameter
 
-## POST
+## POST -- Inserting data into the tables
 
 ### /students - Inserts a student into the students table. 
 Body example: 
@@ -61,11 +61,11 @@ Where (`*` indicates NOT NULL field):
 - `campusUrl` is a link to a picture of the campus; 
 - `campusDesc` is a short description limited to 255 characters (would be prudent to put a limit on the input box in the frontend).
 
-## PUT
+## PUT -- Updating data in the tables
 
 ### /students - Updates a student record. Body same as POST requests, except `"studentId"` (integer) must also be specified.
 
-### /campuses - Same as /students, but for a campuse. Likewise, `"campusId"` (integer) must be specified.
+### /campuses - Same as /students, but for a campus. Likewise, `"campusId"` (integer) must be specified.
 
 Body example for /students (same logic applies for /campuses):
 ```JSON
@@ -81,7 +81,7 @@ Body example for /students (same logic applies for /campuses):
 ```
 
 
-## DELETE
+## DELETE -- 🤔🤔🤔
 
 ### /students/:id
 
