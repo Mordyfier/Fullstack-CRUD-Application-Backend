@@ -37,7 +37,9 @@ Where:
 - `studentDob` is a date string (in whatever format is parsable as such in Postgres; 'YYYY-MM-DD' works); 
 - `studentSex` is Enum, where the possible values are 'M', 'F', 'O'; 
 - `studentGpa` is a double - no constraints on it, but it only makes sense to make it between 0 and 4; 
-- `studentUrl` is a link to student's picture; and, finally, 
+- `studentUrl` is a link to student's picture; 
+
+and, finally, 
 - `campusId` is an integer reference to the campus the student is associated with (`null` is an acceptable value in case student has no campus). 
 
 ### /campuses - Likewise, inserts a campus into the campuses table.
