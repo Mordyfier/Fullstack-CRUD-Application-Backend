@@ -1,24 +1,24 @@
-const db = require('../util/database');
-
-module.exports = class Campus {
-    constructor(campus_name, campus_location, campus_url, campus_desc) {
-        this.name = campus_name,
-        this.location = campus_location,
-        this.url = campus_url,
-        this.desc = campus_desc
-    }
-
-    save() {
-        return db.query('INSERT INTO colleges.campuses(campus_name, campus_location, campus_url, campus_desc) VALUES ($1, $2, $3, $4)', 
-        [this.name, this.location, this.url, this.desc]);
-    }
-
-    static fetchAll() {
-        return db.query('SELECT * FROM colleges.campuses');
-    }
-
-    static fetchById(id) {
-        return db.query('SELECT * FROM colleges.campuses WHERE colleges.campuses.campus_id = $1', [id]);
-    }
-
+module.exports = (sequelize, DataTypes) =>  {
+    const Campus = sequelize.define('campus', {
+        id : {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull : false,
+            primaryKey : true
+        },
+        name : {
+            type : DataTypes.STRING,
+            allowNull : false
+        },
+        location : {
+            type : DataTypes.STRING,
+        },
+        url : {
+            type : DataTypes.STRING,
+        },
+        desc : {
+            type : DataTypes.STRING,
+        }
+    });
+    return Campus;
 }

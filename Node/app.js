@@ -1,6 +1,8 @@
 const express = require('express');
-const app = express();
 const collegeRoutes = require('./routes/college');
+const app = express();
+const db = require('./models');
+const sequelize = db.sequelize;
 
 app.use(express.json());
 
@@ -18,4 +20,13 @@ let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8080;
 }
+
+sequelize.sync()
+  .then(result => {
+    console.log(result);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
 app.listen(port);
