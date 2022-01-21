@@ -22,7 +22,7 @@ exports.getCampusById = async (req, res, next) => {
 };
 
 
-exports.addCampus = async (req, res, next) => {
+exports.createCampus = async (req, res, next) => {
     const { campusName, campusLocation, campusUrl, campusDesc } = req.body;
     try {
         await Campus.create({
