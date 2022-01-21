@@ -26,7 +26,7 @@ Body example:
 ```JSON
 {
     "firstName" : "Joe",
-    "lastDob" : "Student",
+    "lastName" : "Student",
     "email" : "joe@mama.com",
     "imageUrl" : "https://someUrl.com",
     "gpa" : 3.4,
@@ -71,7 +71,7 @@ Body example for /students (same logic applies for /campuses):
 {
     "id" : 1,
     "firstName" : "Joe",
-    "lastDob" : "Student",
+    "lastName" : "Student",
     "email" : "joe@mama.com",
     "imageUrl" : "https://someUrl.com",
     "gpa" : 3.4,
