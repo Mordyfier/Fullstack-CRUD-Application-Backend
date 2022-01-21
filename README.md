@@ -28,7 +28,7 @@ Body example:
     "firstName" : "Joe",
     "lastDob" : "Student",
     "email" : "joe@mama.com",
-    "imageUrl" : null,
+    "imageUrl" : "https://someUrl.com",
     "gpa" : 3.4,
     "campusId" : null
 }
@@ -73,7 +73,7 @@ Body example for /students (same logic applies for /campuses):
     "firstName" : "Joe",
     "lastDob" : "Student",
     "email" : "joe@mama.com",
-    "imageUrl" : null,
+    "imageUrl" : "https://someUrl.com",
     "gpa" : 3.4,
     "campusId" : null
 }
