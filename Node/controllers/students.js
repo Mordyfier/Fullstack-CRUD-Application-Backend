@@ -3,7 +3,7 @@ const { Student } = db;
 // columns: studentId (autoIncrement), studentFirstName, studentLastName, studentEmail, studentImageUrl, studentGpa 
 
 
-exports.readStudents = async (req, res, next) => {
+exports.getStudents = async (req, res, next) => {
     try {
         const students = await Student.findAll();
         res.status(200).json(students);
@@ -12,7 +12,7 @@ exports.readStudents = async (req, res, next) => {
     }
 };
 
-exports.readStudent = async (req, res, next) => {
+exports.getStudent = async (req, res, next) => {
     try {
         const student = await Student.findByPk(req.params.id);
         res.status(200).json(student);
