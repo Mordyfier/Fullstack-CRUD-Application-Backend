@@ -46,23 +46,23 @@ exports.createCampus = async (req, res, next) => {
 }
 
 exports.updateCampus = async (req, res, next) => {
-    const { campusId, campusName, campusImageUrl, campusAddress, campusDesc } = req.body;
+    const { campusId, name, imageUrl, address, desc } = req.body;
     try {
         await Campus.update({
-                name : campusName,
-                imageUrl : campusImageUrl,
-                address : campusAddress,
-                description : campusDesc
+                name : name,
+                imageUrl : imageUrl,
+                address : address,
+                description : desc
             }, 
             { where : { id : campusId } }
         );
         res.status(200).json({
-            message: `Campus '${campusName}' updated. Full data:`,
+            message: `Campus '${name}' updated. Full data:`,
             campus: { 
-                name : campusName,
-                imageUrl : campusImageUrl,
-                address : campusAddress,
-                description : campusDesc
+                name : name,
+                imageUrl : imageUrl,
+                address : address,
+                description : desc
             }
         });
     } catch (err) {
