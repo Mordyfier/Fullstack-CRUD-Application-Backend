@@ -1,5 +1,7 @@
 # fetch() templates:
 
+## (The request bodies are a bit off currently, will be fixed soon. The guiding principle is the same though.)
+
 ## GET:
 
 ```JS
