@@ -12,7 +12,7 @@ Standard CRUD operations available.
 
 ### For students:
 ### [/students](https://ttp-college-db.herokuapp.com/students) - Returns an array of students from the Postgres database
-### [/students/:id](https://ttp-college-db.herokuapp.com/students/1) - Returns an individual student
+### [/students/:id](https://ttp-college-db.herokuapp.com/students/2) - Returns an individual student
 
 ### For campuses:
 ### [/campuses](https://ttp-college-db.herokuapp.com/campuses) - Returns an array of campuses from the Postgres database
@@ -37,7 +37,7 @@ Body example:
 Where: 
 - `firstName`, `lastName` are strings. Cannot be null or empty string.
 - `email` constraints: not null, must be a valid email format.
-- `imageUrl` default value is a placeholder. If you have no image, leave `null`. 
+- `imageUrl` default value is a placeholder. If you have no image, leave this field out of your request body to leave it default. 
 - `gpa` is a double, constrained to be a value between 0 and 4.
 - `campusId` is an integer reference to the campus the student is associated with (`null` is an acceptable value in case student has no campus). 
 
@@ -56,18 +56,20 @@ Where:
 - `name` is a non-null, non-empty string; 
 - `imageUrl` contains placeholder image by default, ignore if got nothing better 😉; 
 - `address` non-null, non-empty string; 
-- `description` extremely large text, or 4096 characters.
+- `description` extremely large *text*.
 
 ## PUT -- Updating data in the tables
 
-### /students - Updates a student record. Body same as POST requests, except `"studentId"` (integer) must also be specified.
+### Besides `id`, only fields we intend to change need to be specified! (No need to repeat all the information just to change gpa or something.)
 
-### /campuses - Same as /students, but for a campus. Likewise, `"campusId"` (integer) must be specified.
+### /students - Updates a student record. Body same as POST requests, except `id` (integer) must also be specified (to indicate *which* student we're editing).
+
+### /campuses - Same as /students, but for a campus. Likewise, `id` (integer) must be specified.
 
 Body example for /students (same logic applies for /campuses):
 ```JSON
 {
-    "studentId" : 1,
+    "id" : 1,
     "firstName" : "Joe",
     "lastDob" : "Student",
     "email" : "joe@mama.com",
