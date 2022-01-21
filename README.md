@@ -12,7 +12,7 @@ Standard CRUD operations available.
 
 ### For students:
 ### [/students](https://ttp-college-db.herokuapp.com/students) - Returns an array of students from the Postgres database
-### [/students/:id](https://ttp-college-db.herokuapp.com/students/1) - Returns an individual student
+### [/students/:id](https://ttp-college-db.herokuapp.com/students/2) - Returns an individual student
 
 ### For campuses:
 ### [/campuses](https://ttp-college-db.herokuapp.com/campuses) - Returns an array of campuses from the Postgres database
