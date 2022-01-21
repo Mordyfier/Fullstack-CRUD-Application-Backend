@@ -1,9 +1,9 @@
-# .fetch() templates:
+# fetch() templates:
 
 ## GET:
 
 ```JS
-async fetchStudents () => {
+async function getStudents() {
   const response = await fetch('https://ttp-college-db.herokuapp.com/students');
   const students = await response.json();
   console.log(students);
@@ -25,7 +25,7 @@ Output:
 ## POST:
 
 ```JS
-async function postStudent () {
+async function postStudent() {
   const response = await fetch('https://ttp-college-db.herokuapp.com/students', {
     headers: {
         'Accept': 'application/json',
@@ -60,7 +60,7 @@ Output:
 ## PUT:
 
 ```JS
-async function putStudent () {
+async function updateStudent() {
   const response = await fetch('https://ttp-college-db.herokuapp.com/students', {
     headers: {
         'Accept': 'application/json',
