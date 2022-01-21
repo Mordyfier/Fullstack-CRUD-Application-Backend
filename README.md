@@ -4,7 +4,7 @@ This is a REST API designed for the TTP Fullstack CRUD Application assignment.
 
 Standard CRUD operations available.
 
-## [`.fetch()` templates for each method available here](https://github.com/Mordyfier/Fullstack-CRUD-Application-Backend/blob/master/FetchTemplates.md)
+## [`fetch()` templates for each method available here](https://github.com/Mordyfier/Fullstack-CRUD-Application-Backend/blob/master/FetchTemplates.md)
 
 # Endpoints:
 
