@@ -34,15 +34,16 @@ Body example:
 }
 ```
 
-Where: 
-- `studentName` is a string;
-- `studentDob` is a date string (in whatever format is parsable as such in Postgres; 'YYYY-MM-DD' works); 
-- `studentSex` is Enum, where the possible values are 'M', 'F', 'O'; 
-- `studentGpa` is a double - no constraints on it, but it only makes sense to make it between 0 and 4; 
+Where (`*` indicates NOT NULL field): 
+- `studentName*` is a string;
+- `studentDob*` is a date string (in whatever format is parsable as such in Postgres; 'YYYY-MM-DD' works); 
+- `studentSex*` is Enum, where the possible values are 'M', 'F', 'O'; 
+- `studentGpa*` is a double - no constraints on it, but it only makes sense to make it between 0 and 4; 
 - `studentUrl` is a link to student's picture; 
 
 and, finally, 
 - `campusId` is an integer reference to the campus the student is associated with (`null` is an acceptable value in case student has no campus). 
+
 
 ### /campuses - Likewise, inserts a campus into the campuses table.
 Body example:
@@ -54,8 +55,8 @@ Body example:
     "campusDesc" : "Brooklyn College is a public university in Brooklyn, New York. It is part of the City University of New York system and enrolls about 15,000 undergraduate and 2,800 graduate students on a 35-acre campus."
 }
 ```
-Where: 
-- `campusName` is a string; 
+Where (`*` indicates NOT NULL field): 
+- `campusName*` is a string; 
 - `campusLocation` is a string for the campus' address; 
 - `campusUrl` is a link to a picture of the campus; 
 - `campusDesc` is a short description limited to 255 characters (would be prudent to put a limit on the input box in the frontend).
