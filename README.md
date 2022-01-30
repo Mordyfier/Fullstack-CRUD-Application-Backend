@@ -1,6 +1,8 @@
 # Fullstack-CRUD-Application-Backend
 
-This is a REST API designed for the TTP Fullstack CRUD Application assignment.
+This is a REST API designed for the TTP Campuses-Students Fullstack CRUD Application assignment.
+
+[Link to the frontend](https://github.com/marcintomala/Campuses-Students-Frontend)
 
 Standard CRUD operations available.
 
